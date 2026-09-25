@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="checkpoint_source_path" default="/tmp/share/logs/latest/cheat_sheet.json" />
+  <arg name="team_user_script" default="user_template.py" />
+
+  <!--
+    C++ user implementation:
+    Change team_user_script to user_template_node.
+  -->
+
+  <group ns="platform_launch">
+    <!--
+      If value set to false, the target nodes will be terminated when user logic is started.
+    -->
+    <param name="sensor_fusion" value="true" />
+    <param name="slam_wrapper" value="true" />
+    <param name="ctl_only" value="true" />
+    <param name="fsm" value="true" />
+
+    <!--
+      If you want to start up camera_left and camera_right,
+      you need to stop (set false) slam_wrapper.
+    -->
+    <param name="camera_left" value="false" />
+    <param name="camera_right" value="false" />
+  </group>
+
+  <node name="krpc_api_node" pkg="krpc_api_server" type="krpc_api_node.py" output="screen" launch-prefix="python3">
+    <param name="checkpoint_source_path" value="$(arg checkpoint_source_path)" />
+  </node>
+
+  <node name="krpc_user" pkg="krpc_user" type="$(arg team_user_script)" output="screen" />
+</launch>

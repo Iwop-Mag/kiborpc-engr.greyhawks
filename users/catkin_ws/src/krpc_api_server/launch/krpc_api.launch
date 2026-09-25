@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="krpc_api_node" pkg="krpc_api_server" type="krpc_api_node.py" output="screen" launch-prefix="python3">
+    <param name="checkpoint_source_path" value="/tmp/share/logs/latest/cheat_sheet.json" />
+  </node>
+</launch>

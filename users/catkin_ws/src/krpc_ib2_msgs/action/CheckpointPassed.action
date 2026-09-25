@@ -1,0 +1,11 @@
+# Goal
+int32 checkpoint_id
+
+---
+# Result
+bool success
+string message
+
+---
+# Feedback
+string status
