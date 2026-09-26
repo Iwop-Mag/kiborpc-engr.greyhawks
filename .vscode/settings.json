@@ -1,0 +1,7 @@
+{
+    "C_Cpp.errorSquiggles"  : "enabled",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none",
+        "repportMissingModuleSource": "none"
+    }
+}
